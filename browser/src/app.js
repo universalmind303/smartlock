@@ -2,30 +2,30 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  browserHistory
 } from 'react-router-dom'
 
-import Device from './Device/index'
+import AboutUs from './AboutUs'
+import Device from './Device'
 
+const path = require('path')
 
+const ROOT = path.resolve(__dirname, './')
+console.log(ROOT)
 const App = () => (
-  <Router>
+  <Router history={browserHistory}>
     <div className='container'>
       <div className='app'>
         <Link to='/aboutUs'>About</Link>
-        <Route path='/aboutUs' component={About}/>
+        <Route path='/aboutUs' component={AboutUs}/>
         <Link to='/device/apt-120'>apt-120</Link>
-        <Route path='/device/' component={Device}/>
+        <Link to='/device/apt-300'>apt-300</Link>
+        <Route path='/device/:device_name' component={Device}/>
         APP
       </div>
     </div>
   </Router>
 )
 
-
-function About() {
-  return (
-    <a>ABOUT</a>
-  )
-}
 export default App

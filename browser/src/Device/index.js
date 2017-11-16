@@ -1,7 +1,15 @@
 import Device from './device'
 import { connect } from 'react-redux'
 
-const mapState = null
-const mapDispatch = null
+import { getDeviceData } from './action'
+
+const mapState = ({device}, {match}) => ({
+  device,
+  match,
+})
+
+const mapDispatch = (dispatch) => ({
+  getDeviceDataWithDispatch: () => dispatch(getDeviceData(dispatch))
+})
 
 export default connect(mapState,mapDispatch)(Device)

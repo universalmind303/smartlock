@@ -10,11 +10,10 @@ const APP_DIR = path.resolve(__dirname, 'src')
 const BUILD_DIR = path.resolve(__dirname, 'dist')
 const ROOT = path.resolve(__dirname, './')
 
-
 module.exports = {
   entry: {
-    app: ROOT + '/index.js',
-    vendor: APP_DIR + '/vendor.js'
+    '/app': ['babel-polyfill', ROOT + '/index.js'],
+    '/vendor': APP_DIR + '/vendor.js'
   },
 
   output: {
@@ -22,15 +21,16 @@ module.exports = {
     filename: '[name].js'
   },
   devServer: {
-    contentBase: BUILD_DIR,
+    contentBase: APP_DIR,
     hot: true,
     compress: true,
+    historyApiFallback: true,
     port: 9000
   },
   module: {
     rules:[
-      {test:/\.js$/ , loader:'babel-loader', exclude: '/node_modules/'},
-      {test:/\.jsx$/ , loader:'babel-loader', exclude: '/node_modules/'}
+      {test:/\.js$/ , loader:'babel-loader', exclude: /node_modules/},
+      {test:/\.jsx$/ , loader:'babel-loader', exclude: /node_modules/}
     ],
     loaders: [
       {
@@ -64,7 +64,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor']
+      name: ['/app', '/vendor']
     }),
     new ExtractTextPlugin({filename: 'style.css'}),
     new ProvidePlugin({
