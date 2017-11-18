@@ -1,13 +1,21 @@
 import React from 'react'
 
 // Renders details about the company
-const AboutUs = ({history: {goBack}}) => (
-  <div className='container'>
-    <p className='h1'>CasaIQ -
-      A Smart Home Solution Custom-built for Apartments, Condos, and Multifamily Real Estate.
-    </p>
-    <button className='btn btn-warning' onClick={goBack}>back to your device</button>
-  </div>
-)
+function AboutUs({history: {goBack}}) {
+  
+  return (
+    <div className=' container-fluid'>
+      <div className='row header'>
+        <div className='col-md-10 col-sm-12 col-xs-12 text-left h1'>CasaIQ- </div>
+        <div className='col-md-2 col-sm-12 col-xs-12  text-right'>
+          <a href='#' className='' onClick={goBack}>back to your device</a>
+        </div>
+      </div>
+      <div> A Smart Home Solution Custom-built for Apartments, Condos, and Multifamily Real Estate.
+      </div>
+    </div>
+  )
+}
+
 
 export default AboutUs

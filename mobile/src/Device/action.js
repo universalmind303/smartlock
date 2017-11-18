@@ -1,11 +1,6 @@
 import { fetchData } from './api'
 
-/**
- * [getDeviceData main logic regarding api request for device data]
- * @param  {Function} dispatch  [redux.dispatch]
- * @param  {String} device_name [string of device name]
- * @return {Function}           [async() => dispatch(dataSuccess) || dispatch(dataFailure)]
- */
+
 export function getDeviceData(dispatch, device_name) {
 
   if(!device_name || typeof device_name !== 'string') {
