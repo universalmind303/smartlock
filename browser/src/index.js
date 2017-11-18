@@ -15,6 +15,7 @@ const store      = compose(
   applyMiddleware(...middleware)
 )(createStore)(rootReducer)
 
+import './styles/bootstrap.scss'
 
 function AppWithRedux() {
   return (

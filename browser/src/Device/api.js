@@ -1,13 +1,16 @@
 // import axios from 'axios'
-// normally we would use something like axios.get, but since there is no api, the
+// normally we would use something like axios.get, but since there is no api, just send back a promise object
 
 /**
 * [getData gets device data from api]
-* @type {[type]}
 * @return {Object} [data object from server]
 */
 
-export async function fetchData () {
+export async function fetchData (device_name) {
+
+  // typical api call would be
+  // const payload = await axios.get(`/api/devices/:${device_name}`)
+
   const payload = {}
   payload.data = await JSON.parse(`{
     "type": "lock",

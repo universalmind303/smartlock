@@ -1,7 +1,9 @@
 import Device from './device'
 import { connect } from 'react-redux'
+import {withRouter} from 'react-router'
+import { getDeviceData, updateLockState } from './action'
 
-import { getDeviceData } from './action'
+import './device.scss'
 
 const mapState = ({device}, {match}) => ({
   device,
@@ -9,7 +11,8 @@ const mapState = ({device}, {match}) => ({
 })
 
 const mapDispatch = (dispatch) => ({
-  getDeviceDataWithDispatch: () => dispatch(getDeviceData(dispatch))
+  getDeviceDataWithDispatch: device_name => dispatch(getDeviceData(dispatch, device_name)),
+  updateLockStateWithDispatch: device_name => dispatch(updateLockState(device_name)),
 })
 
-export default connect(mapState,mapDispatch)(Device)
+export default withRouter(connect(mapState,mapDispatch)(Device))

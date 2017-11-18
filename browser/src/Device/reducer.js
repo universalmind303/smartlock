@@ -2,8 +2,8 @@ export default DeviceReducer
 
 
 const initialState = {
-  devices        : {},
-  isLoading   : true,
+  device: {},
+  isLoading: true,
   isNotStarted: true,
 }
 
@@ -11,37 +11,52 @@ const initialState = {
 * Reducer for Grid Photos
 */
 function DeviceReducer(state=initialState, action) {
-  console.log('action', action)
-  console.log('state.devices', state.devices[action.deviceName])
-
-  if(action.data && action.data.slug) {
-    console.log('action.deviceName', action.deviceName)
-
-  }
   const handlers = {
+    'UPDATE_LOCK_STATE': () => {
+      const deviceState = state.device.state === 'locked' ? 'unlocked' : 'locked'
+      const history = [...state.device.history]
+
+      // if history is too long, remove oldest entry
+      if(history.length >= 10) {
+        history.shift()
+      }
+
+      return {
+        ...state,
+        device: {
+          ...state.device,
+          history: [
+            ...history,
+            {
+              last_updated_at: action.updatedAt,
+              state: deviceState,
+            }
+          ],
+          state: deviceState,
+          last_updated_at: action.updatedAt,
+        }
+      }
+    },
+    
     'DEVICE_REQUEST': () => ({
       ...state,
       isLoading: true,
       isNotStarted: false,
     }),
-    'DEVICE_FETCH_DATA_SUCCESS': () => ({
 
+    'DEVICE_FETCH_DATA_SUCCESS': () => ({
       ...state,
-      devices: {
-        ...state.devices,
-        [action.deviceName]: {
-          ...action.data,
-          history: [
-            // ...state.devices[action.deviceName].history,
-            {
-              state: action.data.state,
-              last_updated_at: action.updatedAt
-            }
-          ]
-        }
+      device: {
+        ...state.device,
+        ...action.data,
+        history: [{
+          last_updated_at: action.updatedAt,
+          state: action.data.state,
+        }]
       },
       isLoading:false,
     }),
+
     'DEVICE_FETCH_ERROR': () => ({
       ...state,
       error: action.error,

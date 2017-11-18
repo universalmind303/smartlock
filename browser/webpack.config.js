@@ -20,19 +20,23 @@ module.exports = {
     path: BUILD_DIR,
     filename: '[name].js'
   },
-  devServer: {
-    contentBase: APP_DIR,
-    hot: true,
-    compress: true,
-    historyApiFallback: true,
-    port: 9000
-  },
+
   module: {
     rules:[
-      {test:/\.js$/ , loader:'babel-loader', exclude: /node_modules/},
-      {test:/\.jsx$/ , loader:'babel-loader', exclude: /node_modules/}
-    ],
-    loaders: [
+      {
+        test:/\.js$/ ,
+        loader:'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test:/\.jsx$/ ,
+        loader:'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.scss$/,
+        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
+      },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
@@ -41,8 +45,8 @@ module.exports = {
         })
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+        test: /\.(png|jpg|)$/,
+        loader: 'url-loader?limit=200000'
       },
       {
         test: /\.(woff|woff2)$/,
@@ -59,8 +63,15 @@ module.exports = {
         test: /\.svg$/,
         loader: 'file-loader'
       },
+    ],
 
-    ]
+  },
+  devServer: {
+    contentBase: ROOT,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+    port: 9000
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
