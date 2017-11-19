@@ -17,6 +17,7 @@ const store      = compose(
 
 
 import './styles/bootstrap.scss'
+
 function AppWithRedux() {
   return (
     <Provider store={store} >

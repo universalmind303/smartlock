@@ -1,34 +1,29 @@
 import React from 'react'
 import {
-  View,
+  Image,
   Text,
-  Dimensions,
-  StyleSheet,
   TouchableOpacity,
+  View,
 } from 'react-native'
 
-const {height} = Dimensions.get('window')
+import styles from './styles'
 
 // Renders details about the company
 function AboutUs({history: {goBack}}) {
   return (
-    <View style={styles.header}>
-      <Text>CasaIQ- </Text>
-      <View className='row header'>
-        <TouchableOpacity onPress={goBack}>
-          <Text >back to your device</Text>
-        </TouchableOpacity>
+    <View>
+      <View style={styles.header}>
+        <View style={styles.row}>
+          <Text style={styles.title}>Casa IQ- </Text>
+          <TouchableOpacity style={styles.link} onPress={goBack}>
+            <Image source={require('./images/arrow.png')} />
+          </TouchableOpacity>
+        </View>
       </View>
+      <Text>
+        A Smart Home Solution Custom-built for Apartments, Condos, and Multifamily Real Estate.
+      </Text>
     </View>
   )
 }
-
-const styles = StyleSheet.create ({
-  header : {
-    paddingTop: height * 0.05,
-    backgroundColor: '#1de9b6',
-    height: height * 0.15
-  }
-})
-
 export default AboutUs

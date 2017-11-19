@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import {withRouter} from 'react-router'
 import { getDeviceData, updateLockState } from './action'
 
-import './device.scss'
+import './styles.scss'
 
 const mapState = ({device}, {match}) => ({
   device,

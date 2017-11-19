@@ -3,6 +3,7 @@
 
 /**
 * [getData gets device data from api]
+* @param {String} device_name  [string of device_name]
 * @return {Object} [data object from server]
 */
 

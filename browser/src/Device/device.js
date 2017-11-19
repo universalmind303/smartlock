@@ -3,8 +3,8 @@ import React from 'react'
 
 import Header from './Header'
 
-import Lock from '../../../assets/icons/locked.png'
-import Unlock from '../../../assets/icons/unlocked.png'
+import Lock from './images/locked.png'
+import Unlock from './images/unlocked.png'
 
 
 // Main logic for devices
@@ -27,11 +27,9 @@ function Device({
     getDeviceDataWithDispatch(device_name)
     return (<div>Loading</div>)
   }
-
   if(isLoading){
     return (<div>Loading</div>)
   }
-
   if(error){
     return (
       <div>
@@ -56,11 +54,9 @@ function Device({
         <div><p>
           {device.state.toUpperCase()}
         </p></div>
-        <button
-          className='btn btn-transparent'
-          onClick={() => updateLockStateWithDispatch(device_name)}>
-          <img src={device.state === 'locked' ? Lock : Unlock} />
-        </button>
+        <img
+          src={device.state === 'locked' ? Lock : Unlock}
+          onClick={() => updateLockStateWithDispatch(device_name)} />
       </div>
     </div>
   )

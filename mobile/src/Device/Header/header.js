@@ -1,16 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-native'
-
 import {
-  Dimensions,
-  View,
   Text,
-  StyleSheet,
+  View,
 } from 'react-native'
 
-const {height} = Dimensions.get('window')
+import styles from './styles'
 
-// returns a header with normalized title
 function Header({title}) {
 
   // normalize the title
@@ -21,20 +17,13 @@ function Header({title}) {
 
   return (
     <View style={styles.header}>
-      <Text>{normalizedTitle}</Text>
-      <Link to='/aboutUs'><Text>About</Text></Link>
+      <View style={styles.row}>
+        <Text style={styles.title}>{normalizedTitle}</Text>
+        <Link style={styles.link} to='/aboutUs'>
+          <Text>About</Text>
+        </Link>
+      </View>
     </View>
   )
 }
-
-
-
-const styles = StyleSheet.create ({
-  header : {
-    paddingTop: height * 0.05,
-    backgroundColor: '#1de9b6',
-    height: height * 0.15
-  }
-})
-
 export default Header

@@ -1,15 +1,11 @@
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 
-// import jest from 'jest'
-
 import * as actions from './action'
 
 
 const middlewares = [thunk]
 const mockStore = configureStore(middlewares)
-// const api = require('./api')
-
 describe('#getDeviceData', () => {
   beforeEach(function () {
     jest.resetModules()

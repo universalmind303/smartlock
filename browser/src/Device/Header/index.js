@@ -1,5 +1,5 @@
 import Header from './header'
 
-import './header.scss'
+import './styles.scss'
 
 export default Header

@@ -24,12 +24,7 @@ module.exports = {
   module: {
     rules:[
       {
-        test:/\.js$/ ,
-        loader:'babel-loader',
-        exclude: /node_modules/
-      },
-      {
-        test:/\.jsx$/ ,
+        test:/\.(js|jsx)$/ ,
         loader:'babel-loader',
         exclude: /node_modules/
       },
@@ -52,15 +47,7 @@ module.exports = {
         test: /\.(woff|woff2)$/,
         loader: 'url-loader?limit=10000&minetype=application/font-woff' },
       {
-        test: /\.ttf$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.eot$/,
-        loader: 'file-loader'
-      },
-      {
-        test: /\.svg$/,
+        test: /\.(ttf|eot|svg)$/,
         loader: 'file-loader'
       },
     ],

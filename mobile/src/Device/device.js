@@ -2,20 +2,18 @@ import React from 'react'
 
 import {
   ActivityIndicator,
-  Dimensions,
-  TouchableOpacity,
   Image,
-  View,
   Text,
-  StyleSheet,
+  TouchableOpacity,
+  View,
 } from 'react-native'
 
 import Header from './Header'
+import styles from './styles'
 
-
-const { height } = Dimensions.get('window')
-
-// Main logic for devices
+/*
+  Main logic for Devices
+ */
 function Device({
   device: {
     isNotStarted,
@@ -34,53 +32,43 @@ function Device({
   if(isNotStarted){
     getDeviceDataWithDispatch(device_name)
     return <ActivityIndicator />
-
   }
-
   if(isLoading){
     return <ActivityIndicator />
   }
-
   if(error){
-    console.log(error)
     return (
       <View>
-        {/* <Header title={'CasaIQ-'} /> */}
         <Text>
           Internal Error, please reload page
         </Text>
       </View>
     )
   }
-
   if(!device || device.type !== 'lock') {
     return (
-      <Header title={'not supported yet'} />
+      <View>
+        <Header title={'not supported yet'} />
+        <Text>We are not supporting this device at the moment</Text>
+      </View>
     )
   }
-
   return (
     <View>
       <Header title={device_name} />
       <View style={styles.topBuffer}>
-        <View><Text>
-          {device.state.toUpperCase()}
-        </Text></View>
-        <TouchableOpacity
-          onPress={() => updateLockStateWithDispatch(device_name)}>
-          <Image source={device.state === 'locked'
-            ? require('./images/locked.png')
-            : require('./images/unlocked.png')} />
-        </TouchableOpacity>
+        <View style={styles.body}>
+          <Text>
+            {device.state.toUpperCase()}
+          </Text>
+          <TouchableOpacity onPress={() => updateLockStateWithDispatch(device_name)}>
+            <Image source={device.state === 'locked'
+              ? require('./images/locked.png')
+              : require('./images/unlocked.png')} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  topBuffer: {
-    marginTop: height * 0.10
-  }
-})
-
 export default Device

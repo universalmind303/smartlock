@@ -1,5 +1,5 @@
 import AboutUs from './aboutUs'
 
-import './aboutUs.scss'
+import './styles.scss'
 
 export default AboutUs

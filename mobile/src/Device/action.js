@@ -1,6 +1,11 @@
 import { fetchData } from './api'
 
-
+/**
+ * [getDeviceData description]
+ * @param  {Function} dispatch    [store.dispatch]
+ * @param  {String}   device_name [string of device name ]
+ * @return {Function}             [async() => store.dispatch(dataFailure || dataSuccess)]
+ */
 export function getDeviceData(dispatch, device_name) {
 
   if(!device_name || typeof device_name !== 'string') {
