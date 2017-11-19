@@ -3,14 +3,12 @@
 
 /**
 * [getData gets device data from api]
-* @param {String} device_name  [string of device_name]
+* @param {String} deviceName
 * @return {Object} [data object from server]
 */
-
-export async function fetchData (device_name) {
-
+export default async function fetchData(deviceName) {
   // typical api call would be
-  // const payload = await axios.get(`/api/devices/:${device_name}`)
+  // const payload = await axios.get(`/api/devices/:${deviceName`)
   const payload = {}
   payload.data = await JSON.parse(`{
     "type": "lock",

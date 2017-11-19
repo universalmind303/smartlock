@@ -11,6 +11,8 @@ import {
 import Header from './Header'
 import styles from './styles'
 
+const lock = require('./images/locked.png')
+const unlock = require('./images/unlocked.png')
 /*
   Main logic for Devices
  */
@@ -29,14 +31,14 @@ function Device({
     }
   }
 }) {
-  if(isNotStarted){
+  if (isNotStarted) {
     getDeviceDataWithDispatch(device_name)
     return <ActivityIndicator />
   }
-  if(isLoading){
+  if (isLoading) {
     return <ActivityIndicator />
   }
-  if(error){
+  if (error) {
     return (
       <View>
         <Text>
@@ -45,14 +47,15 @@ function Device({
       </View>
     )
   }
-  if(!device || device.type !== 'lock') {
+  if (!device || device.type !== 'lock') {
     return (
       <View>
-        <Header title={'not supported yet'} />
+        <Header title="not supported yet" />
         <Text>We are not supporting this device at the moment</Text>
       </View>
     )
   }
+
   return (
     <View>
       <Header title={device_name} />
@@ -62,9 +65,7 @@ function Device({
             {device.state.toUpperCase()}
           </Text>
           <TouchableOpacity onPress={() => updateLockStateWithDispatch(device_name)}>
-            <Image source={device.state === 'locked'
-              ? require('./images/locked.png')
-              : require('./images/unlocked.png')} />
+            <Image source={device.state === 'locked' ? lock : unlock} />
           </TouchableOpacity>
         </View>
       </View>
