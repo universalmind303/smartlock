@@ -3,8 +3,10 @@
   "parserOptions": {
     "ecmaVersion": 6,
   },
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb"],
   "rules": {
+    "camelcase" : [0, {properties: "never"}],
+    "react/jsx-filename-extension" : [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types"        : [0],
     "comma-dangle"            : [0, "always-multiline"],
     "complexity"              : [1, 7],
@@ -50,23 +52,26 @@
     "radix"                   : [2],
     "react/jsx-uses-vars"     : 1,
     "semi"                    : [2, "never"],
-    "valid-jsdoc": [1, {
-      "prefer": {
-        "returns": "return"
+    "jsx-a11y/anchor-is-valid" : [ "never"],
+    "jsx-a11y/click-events-have-key-events" : ["never"],
+    "jsx-a11y/no-noninteractive-element-interactions" : ["never"],
+    "valid-jsdoc" : [1, {
+      "prefer" : {
+        "returns" : "return"
       },
       "requireParamDescription"  : false,
       "requireReturn"            : false,
       "requireReturnDescription" : false
     }]
   },
-  "env": {
+  "env" : {
     "es6"     : true,
     "browser" : true,
     "mocha"   : true,
     "node"    : true,
     "jest"    : true,
   },
-  "plugins": [
+  "plugins" : [
     "react"
   ]
 

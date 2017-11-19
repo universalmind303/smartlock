@@ -1,9 +1,9 @@
-import {StyleSheet, Dimensions} from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 
-const {height,width} = Dimensions.get('window')
+const { height, width } = Dimensions.get('window')
 
-export default StyleSheet.create ({
-  header : {
+export default StyleSheet.create({
+  header: {
     paddingLeft: 10,
     backgroundColor: '#1de9b6',
     height: height * 0.10
@@ -17,7 +17,7 @@ export default StyleSheet.create ({
     fontSize: 27,
     width: width * 0.7
   },
-  link : {
+  link: {
     paddingRight: 20,
     flexDirection: 'row',
     justifyContent: 'flex-end',

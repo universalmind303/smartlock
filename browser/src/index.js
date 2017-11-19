@@ -4,7 +4,7 @@ import {
   createStore,
   applyMiddleware,
   compose
-}  from 'redux'
+} from 'redux'
 import thunk from 'redux-thunk'
 
 import App from './app'
@@ -13,10 +13,7 @@ import rootReducer from './rootReducer'
 import './styles/bootstrap.scss'
 
 const middleware = [thunk]
-const store      = compose(
-  applyMiddleware(...middleware)
-)(createStore)(rootReducer)
-
+const store = compose(applyMiddleware(...middleware))(createStore)(rootReducer)
 
 
 function AppWithRedux() {

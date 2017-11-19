@@ -10,15 +10,15 @@ const initialState = {
 /*
 * Reducer for Device
 */
-export default function DeviceReducer(state=initialState, action) {
+export default function DeviceReducer(state = initialState, action) {
   const handlers = {
 
-    'UPDATE_LOCK_STATE': () => {
+    UPDATE_LOCK_STATE: () => {
       const deviceState = state.device.state === 'locked' ? 'unlocked' : 'locked'
       const history = [...state.device.history]
 
       // if history is too long, remove oldest entry
-      if(history.length >= 10) {
+      if (history.length >= 10) {
         history.shift()
       }
 
@@ -39,13 +39,13 @@ export default function DeviceReducer(state=initialState, action) {
       }
     },
 
-    'DEVICE_REQUEST': () => ({
+    DEVICE_REQUEST: () => ({
       ...state,
       isLoading: true,
       isNotStarted: false,
     }),
 
-    'DEVICE_FETCH_DATA_SUCCESS': () => ({
+    DEVICE_FETCH_DATA_SUCCESS: () => ({
       ...state,
       device: {
         ...state.device,
@@ -56,14 +56,14 @@ export default function DeviceReducer(state=initialState, action) {
         }],
         deviceName: action.deviceName,
       },
-      isLoading:false,
+      isLoading: false,
       isNotStarted: false,
     }),
 
-    'DEVICE_FETCH_ERROR': () => ({
+    DEVICE_FETCH_ERROR: () => ({
       ...state,
       error: action.error,
-      isLoading:false,
+      isLoading: false,
       isNotStarted: false,
     }),
   }
