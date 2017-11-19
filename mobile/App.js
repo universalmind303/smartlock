@@ -7,7 +7,7 @@ import {
 } from 'redux'
 import thunk from 'redux-thunk'
 
-import App from './src/index'
+import App from './src'
 import rootReducer from './src/rootReducer'
 
 const middleware = [thunk]

@@ -3,11 +3,7 @@ import React from 'react'
 import BackButton from './images/arrow.png'
 
 import './styles.scss'
-<<<<<<< 99435eea829ee746207e9389a84c3317c16487ba
-=======
 
-
->>>>>>> airbnb merge conflict resolved
 // Renders details about the company
 function AboutUs({ history: { goBack } }) {
   return (

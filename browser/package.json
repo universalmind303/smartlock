@@ -7,8 +7,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack -p",
-    "lint": "node_modules/.bin/eslint ./src",
-    "test": "jest --coverage"
+    "lint": "../node_modules/.bin/eslint ./src",
+    "test": "jest"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -20,7 +20,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-jest": "^21.2.0",
     "css-loader": "^0.28.4",
-    "eslint": "^4.11.0",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^0.11.2",
     "html-loader": "^0.4.5",

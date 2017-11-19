@@ -8,15 +8,18 @@ import {
 
 import styles from './styles'
 
+const backArrow = require('./images/arrow.png')
+
+
 // Renders details about the company
-function AboutUs({history: {goBack}}) {
+function AboutUs({ history: { goBack } }) {
   return (
     <View>
       <View style={styles.header}>
         <View style={styles.row}>
           <Text style={styles.title}>Casa IQ- </Text>
           <TouchableOpacity style={styles.link} onPress={goBack}>
-            <Image source={require('./images/arrow.png')} />
+            <Image source={backArrow} />
           </TouchableOpacity>
         </View>
       </View>
