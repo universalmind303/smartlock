@@ -1,8 +1,6 @@
 import React from 'react'
 
-
 import Header from './Header'
-
 import Lock from './images/locked.png'
 import Unlock from './images/unlocked.png'
 
