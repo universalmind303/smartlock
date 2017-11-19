@@ -21,40 +21,44 @@ function Device({
     }
   }
 }) {
-  if(isNotStarted){
+  if (isNotStarted) {
     getDeviceDataWithDispatch(device_name)
     return (<div>Loading</div>)
   }
-  if(isLoading){
+  if (isLoading) {
     return (<div>Loading</div>)
   }
-  if(error){
+  if (error) {
     return (
       <div>
-        <Header title={'CasaIQ-'} />
-        <div className='buffer-top text-center'>
+        <Header title="CasaIQ-" />
+        <div className="buffer-top text-center">
           Internal Error, please reload page
         </div>
       </div>
     )
   }
 
-  if(!device || device.type !== 'lock') {
+  if (!device || device.type !== 'lock') {
     return (
-      <Header title={'not supported yet'} />
+      <Header title="not supported yet" />
     )
   }
 
   return (
-    <div className='container-fluid'>
+    <div className="container-fluid">
       <Header title={device_name} />
-      <div className='text-center buffer-top'>
-        <div><p>
-          {device.state.toUpperCase()}
-        </p></div>
+      <div className="text-center buffer-top">
+        <div>
+          <p>
+            {device.state.toUpperCase()}
+          </p>
+        </div>
         <img
+          alt=" "
           src={device.state === 'locked' ? Lock : Unlock}
-          onClick={() => updateLockStateWithDispatch(device_name)} />
+          onClick={() => updateLockStateWithDispatch(device_name)}
+        />
       </div>
     </div>
   )

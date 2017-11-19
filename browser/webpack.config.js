@@ -12,8 +12,8 @@ const ROOT = path.resolve(__dirname, './')
 
 module.exports = {
   entry: {
-    '/app': ['babel-polyfill', ROOT + '/index.js'],
-    '/vendor': APP_DIR + '/vendor.js'
+    '/app': ['babel-polyfill', `${ROOT}/index.js`],
+    '/vendor': `${APP_DIR}/vendor.js`
   },
 
   output: {
@@ -22,15 +22,15 @@ module.exports = {
   },
 
   module: {
-    rules:[
+    rules: [
       {
-        test:/\.(js|jsx)$/ ,
-        loader:'babel-loader',
+        test: /\.(js|jsx)$/,
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /\.scss$/,
-        loaders: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.css$/,
@@ -45,7 +45,8 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2)$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff' },
+        loader: 'url-loader?limit=10000&minetype=application/font-woff'
+      },
       {
         test: /\.(ttf|eot|svg)$/,
         loader: 'file-loader'
@@ -64,17 +65,17 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: ['/app', '/vendor']
     }),
-    new ExtractTextPlugin({filename: 'style.css'}),
+    new ExtractTextPlugin({ filename: 'style.css' }),
     new ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
       jquery: 'jquery',
-      'Tether': 'tether',
+      Tether: 'tether',
       'window.Tether': 'tether',
       Tooltip: 'exports-loader?Tooltip!bootstrap/js/dist/tooltip'
     }),
     new HtmlWebpackPlugin({
-      template: APP_DIR + '/index.html'
+      template: `${APP_DIR}/index.html`
     })
   ]
 }

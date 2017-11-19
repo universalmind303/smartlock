@@ -7,8 +7,7 @@ import {
 
 import styles from './styles'
 
-function Header({title}) {
-
+function Header({ title }) {
   // normalize the title
   // \b - word boundary
   // [a-z] alphabetic capture group
@@ -19,7 +18,7 @@ function Header({title}) {
     <View style={styles.header}>
       <View style={styles.row}>
         <Text style={styles.title}>{normalizedTitle}</Text>
-        <Link style={styles.link} to='/aboutUs'>
+        <Link style={styles.link} to="/aboutUs">
           <Text>About</Text>
         </Link>
       </View>
