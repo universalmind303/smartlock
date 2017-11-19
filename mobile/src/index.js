@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 
 import {
-  NativeRouter,
+  NativeRouter as Router,
   Route,
   Link,
 } from 'react-router-native'
@@ -22,7 +22,7 @@ const {height} = Dimensions.get('window')
  */
 const App = () => (
   <View style={styles.container}>
-    <NativeRouter >
+    <Router >
       <View>
         <Route exact path='/' component={() => (
           <View style={styles.demo}>
@@ -34,7 +34,7 @@ const App = () => (
         <Route path='/aboutUs' component={AboutUs} />
         <Route path='/device/:device_name' component={Device} />
       </View>
-    </NativeRouter>
+    </Router>
   </View>
 )
 
