@@ -24,6 +24,7 @@ to view the app you must go to /device/${insert device name here}
 #### Mobile
 Due to the fact that you cannot setup views the same way in react-native, upon load, the default screen is a link to start the demo.
 
+#### Devices
 All of the routes will generate the same data, to simulate other data or to test all features, you can easily plug in an existing api, or modify the data to your liking in /Device/api.js.
 
 ### Testing
